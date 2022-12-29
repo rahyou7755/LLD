@@ -1,0 +1,91 @@
+#include<linux/init.h>
+#include<linux/module.h>
+#include<linux/kernel.h>
+
+static int adil(void)
+{
+printk(KERN_INFO "adil init\n");
+return 0;
+}
+
+static void adi(void)
+{
+printk(KERN_EMERG "exiting from adi function\n");
+}
+
+module_init(adil);
+module_exit(adi);
+
+MODULE_LICENSE("GPL");
+/*#include <linux/module.h>
+
+MODULE_LICENSE("GPL");
+MODULE_LICENSE("GPL v2");
+MODULE_LICENSE("Dual BSD/GPL");
+
+MODULE_AUTHOR("johny");
+MODULE_DESCRIPTION("A sample driver");
+MODULE_VERSION("1:0.0");
+
+static int __init hello_world_init(void) 
+{
+	printk(KERN_INFO"hello this is my first");
+    return 0;
+}
+module_init(hello_world_init);
+
+void __exit hello_world_exit(void)
+{
+ printk(KERN_INFO"Exiting my programming");
+}
+module_exit(hello_world_exit);
+*/
+/*#include<linux/module.h>
+#include<linux/init.h>
+#include<linux/kernel.h>
+
+static int hello_init(void){
+   printk(KERN_ALERT "Hello TheLittleNaruto; it's your first driver which d    oes no shit :/\n");
+   return 0;
+}
+
+static void hello_exit(void){
+   printk(KERN_INFO "Goodbye TheLittleNaruto; No point in keeping this driv    er running.\n");
+}
+
+module_init(hello_init);
+module_exit(hello_exit);
+
+MODULE_AUTHOR("TheLittleNaruto");
+MODULE_LICENSE("GPL");
+MODULE_DESCRIPTION("TheLittleNaruto's first driver with GPL licence.");*/
+
+
+
+
+obj-m +=HELLOWORLD.o
+
+all:
+	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) modules
+clean:
+	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) clean
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
